@@ -120,25 +120,15 @@
     })
   
     /**
-     * Mobile nav dropdowns activate
-     */
-    on('click', '.navbar .dropdown > a', function(e) {
-      if (select('#navbar').classList.contains('navbar-mobile')) {
-        e.preventDefault()
-        this.nextElementSibling.classList.toggle('dropdown-active')
-      }
-    }, true)
-  
-    /**
      * Scrool with ofset on links with a class name .scrollto
      */
-    on('click', '.scrollto', function(e) {
+     on('click', '.scrollto', function(e) {
       if (select(this.hash)) {
         e.preventDefault()
   
-        let body = select('body')
-        if (body.classList.contains('mobile-nav-active')) {
-          body.classList.remove('mobile-nav-active')
+        let navbar = select('#navbar')
+        if (navbar.classList.contains('navbar-mobile')) {
+          navbar.classList.remove('navbar-mobile')
           let navbarToggle = select('.mobile-nav-toggle')
           navbarToggle.classList.toggle('bi-list')
           navbarToggle.classList.toggle('bi-x')
