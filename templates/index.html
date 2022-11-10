@@ -9,11 +9,14 @@ block content %}
       <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
       <li><a class="nav-link scrollto" href="#about">About</a></li>
       <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+      <li>
+        <a class="nav-link scrollto" href="#testimonials">Testimonials</a>
+      </li>
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
   </nav>
 </header>
-<!-- End Header -->
+<!-- ======= End Header ======= -->
 
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex flex-column justify-content-center">
@@ -43,6 +46,7 @@ block content %}
 </section>
 <!-- End Hero -->
 
+<!-- #main -->
 <main id="main">
   <!-- ======= About Section ======= -->
   <section id="about" class="about">
@@ -322,9 +326,104 @@ block content %}
   </section>
   <!-- End Portfolio Section -->
 
-  <!-- ======= Review Section ======= -->
-  <section id="review" class="review"></section>
-  <!-- End Contact Section -->
+  <!-- ======= Testimonials Section ======= -->
+  <section id="testimonials" class="testimonials section-bg">
+    <div class="container mb-5">
+      <div class="section-title">
+        <h2>Testimonials</h2>
+        <p>Here you can see reviews from site visitors!</p>
+      </div>
+
+      <div
+        class="testimonials-slider swiper"
+        data-aos="fade-up"
+        data-aos-delay="100">
+        <div class="swiper-wrapper">
+          {% for review in reviews %}
+          <div class="swiper-slide">
+            <div class="testimonial-item" data-aos="fade-up">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                {{ review.message }}
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img
+                src="../static/img/avatar.svg"
+                class="testimonial-img"
+                alt="" />
+              <h3>{{ review.name }}</h3>
+              <h4>{{ review.activity }}</h4>
+              <h5>{{ review.created_on }}</h5>
+            </div>
+          </div>
+          <!-- End testimonial item -->
+          {% endfor %}
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <h2>Leave your review!</h2>
+    </div>
+
+    <div class="row mt-1 justify-content-center mx-2 my-2">
+      <div class="col-lg-8 mt-5 mt-lg-0">
+        <form
+          action="{{ url_for('main_page') }}"
+          method="POST"
+          role="form"
+          class="reviews-form">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input
+                maxlength="15"
+                type="text"
+                name="name"
+                class="form-control"
+                id="name"
+                placeholder="Your name"
+                required />
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+              <input
+                maxlength="15"
+                type="text"
+                class="form-control"
+                name="activity"
+                id="activity"
+                placeholder="Your activity"
+                required />
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <textarea
+              maxlength="150"
+              class="form-control"
+              name="message"
+              id="message"
+              rows="5"
+              placeholder="Message"
+              required></textarea>
+          </div>
+          <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message">
+              Error occured while sending form! Try again, please!
+            </div>
+            <div class="sent-message">
+              Your review has been sent. Thank you!
+            </div>
+          </div>
+          <div class="text-center">
+            <button type="submit">Send Review</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- ======= End Testimonials Section ======= -->
 </main>
 <!-- End #main -->
 
