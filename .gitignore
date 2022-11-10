@@ -1,0 +1,4 @@
+venv/
+main.ini
+wsgi.py
+instance/
