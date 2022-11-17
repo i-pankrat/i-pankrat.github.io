@@ -146,7 +146,7 @@ location / {
 sudo nginx -t
 ```
 
-20.  Restarn nginx. Everything is ready! Check your site.
+20.  Restart nginx. Everything is ready! Check your site.
 
 ``` shell
 sudo systemctl restart nginx
